@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Quizzes</title>
 </head>
-<body onload="initializeQuizList()">
+<body onload="initializeQuizList();">
   
     <h1>Quizzes</h1>
 
@@ -15,8 +15,8 @@
 
     <div style="background-color: light-grey;">
 
-        <input type="text" id="new-quiz-textbox" />
-        <input type="button" value="Add" />
+        <input type="text" id="new-quiz-name-textbox" />
+        <input type="button" value="Add" onclick="addNewQuiz();" />
 
     </div>
 
@@ -29,6 +29,20 @@
                 <li>Quiz 2</li>
                 <li>Quiz 3</li>
             `;
+        }
+
+        function addNewQuiz() {
+            
+            // Get what was typed into the textbox. Maybe validate it???
+            let newQuizName = document.getElementById("new-quiz-name-textbox").value; //.innerText;
+            console.log(newQuizName);
+        
+            // Update the quiz list, appending the new quiz name. 
+            let quizListUl = document.getElementById('quiz-list');
+
+            quizListUl.innerHTML += `
+                <li>${newQuizName}</li>
+            `;            
         }
     </script>
 </body>
