@@ -48,7 +48,7 @@
             let quizListUl = document.getElementById('quiz-list');
 
             quizListUl.innerHTML += `
-                <li>${newQuizName}</li>
+                <li>${newQuizName} <button onclick='naiveDeleteQuiz("${newQuizName.toString()}");'>Delete</button></li>
             `;     
 
             // Clear the textbox after adding.
@@ -58,6 +58,22 @@
             quizTextbox.focus();
 
             return false;
+        }
+
+        function naiveDeleteQuiz(quizNameToDelete) {
+            
+            // Confirm the name is comming through!!!
+            console.log(quizNameToDelete);
+
+            // Split by newline, remove filter out rows containing quiz name.
+            let quizListUl = document.getElementById('quiz-list');
+            let currentList = quizListUl.innerHTML;
+
+            let newList = currentList.split('\n')
+                .filter(x => x.indexOf(quizNameToDelete) === -1);
+            console.log(newList);
+
+            quizListUl.innerHTML = newList.join('\n');
         }
     </script>
 </body>
