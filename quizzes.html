@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quizzes</title>
+</head>
+<body onload="initializeQuizList()">
+  
+    <h1>Quizzes</h1>
+
+    <ul id="quiz-list">
+    </ul>
+
+    <div style="background-color: light-grey;">
+
+        <input type="text" id="new-quiz-textbox" />
+        <input type="button" value="Add" />
+
+    </div>
+
+    <script>
+        function initializeQuizList() {
+            let quizListUl = document.getElementById('quiz-list');
+
+            quizListUl.innerHTML = `
+                <li>Quiz 1</li>
+                <li>Quiz 2</li>
+                <li>Quiz 3</li>
+            `;
+        }
+    </script>
+</body>
+</html>
