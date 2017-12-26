@@ -34,7 +34,8 @@
         function addNewQuiz() {
             
             // Get what was typed into the textbox. Maybe validate it???
-            let newQuizName = document.getElementById("new-quiz-name-textbox").value; //.innerText;
+            let quizTextbox = document.getElementById("new-quiz-name-textbox");
+            let newQuizName = quizTextbox.value; //.innerText;
             console.log(newQuizName);
         
             // Update the quiz list, appending the new quiz name. 
@@ -42,7 +43,13 @@
 
             quizListUl.innerHTML += `
                 <li>${newQuizName}</li>
-            `;            
+            `;     
+
+            // Clear the textbox after adding.
+            // And put focus in the textbox to facilitate
+            // multiple adds.
+            quizTextbox.value = "";
+            quizTextbox.focus();
         }
     </script>
 </body>
