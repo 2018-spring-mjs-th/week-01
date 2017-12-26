@@ -13,10 +13,12 @@
     <ul id="quiz-list">
     </ul>
 
-    <div style="background-color: light-grey;">
+    <div style="background-color: gray; padding: 5px; width: 200px;">
 
-        <input type="text" id="new-quiz-name-textbox" />
-        <input type="button" value="Add" onclick="addNewQuiz();" />
+        <form onsubmit="return addNewQuiz();">
+            <input type="text" id="new-quiz-name-textbox" />
+            <input type="submit" value="Add" />        
+        </form>
 
     </div>
 
@@ -29,6 +31,10 @@
                 <li>Quiz 2</li>
                 <li>Quiz 3</li>
             `;
+
+            // Put focus into the add textbox!!!
+            let quizTextbox = document.getElementById("new-quiz-name-textbox");            
+            quizTextbox.focus();            
         }
 
         function addNewQuiz() {
@@ -50,6 +56,8 @@
             // multiple adds.
             quizTextbox.value = "";
             quizTextbox.focus();
+
+            return false;
         }
     </script>
 </body>
