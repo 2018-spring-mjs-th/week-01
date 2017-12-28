@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <title>Quizzes</title>
 </head>
 <body onload="initializeQuizList();">
   
-    <h1 style="background-color: gray; padding: 5px; color: white; width: 200px;">Quizzes</h1>
+    <h1 style="background-color: gray; padding: 5px; color: white;">Quizzes</h1>
 
-    <ul id="quiz-list">
+    <ul id="quiz-list" class='list-group'>
     </ul>
 
-    <div style="background-color: gray; padding: 5px; width: 200px;">
+    <div style="background-color: gray; padding: 5px;">
 
         <form onsubmit="return addNewQuiz();">
             <input type="text" id="new-quiz-name-textbox" />
@@ -27,9 +28,9 @@
             let quizListUl = document.getElementById('quiz-list');
 
             quizListUl.innerHTML = `
-                <li>Quiz 1</li>
-                <li>Quiz 2</li>
-                <li>Quiz 3</li>
+                <li class='list-group-item'>Quiz 1</li>
+                <li class='list-group-item'>Quiz 2</li>
+                <li class='list-group-item'>Quiz 3</li>
             `;
 
             // Put focus into the add textbox!!!
@@ -48,7 +49,7 @@
             let quizListUl = document.getElementById('quiz-list');
 
             quizListUl.innerHTML += `
-                <li>${newQuizName} <button onclick='naiveDeleteQuiz("${newQuizName.toString()}");'>Delete</button></li>
+                <li class='list-group-item'>${newQuizName} <button onclick='naiveDeleteQuiz("${newQuizName.toString()}");'>Delete</button></li>
             `;     
 
             // Clear the textbox after adding.
