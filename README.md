@@ -9,3 +9,9 @@ For week-01 slack-and-tell, working in pairs if you like, starting with the guid
   * Maybe think of keyboard (E.g. ENTER to add) support
   
 * What about delete-quiz-behavior ? ? ? Hmm...
+
+## If still time (and interest), style our quiz list a bit...
+
+* Hookup Bootstrap (via CDN)
+
+* Change our `<ul>` to a `list-group` with `list-group-item`s
