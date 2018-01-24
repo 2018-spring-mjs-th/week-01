@@ -4,19 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <title>Quizzes</title>
 </head>
-<body onload="initializeQuizList()">
+<body onload="initializeQuizList();">
   
-    <h1>Quizzes</h1>
+    <h1 style="background-color: gray; padding: 5px; color: white;">Quizzes</h1>
 
-    <ul id="quiz-list">
+    <ul id="quiz-list" class='list-group'>
     </ul>
 
-    <div style="background-color: light-grey;">
+    <div style="background-color: gray; padding: 5px;">
 
-        <input type="text" id="new-quiz-textbox" />
-        <input type="button" value="Add" />
+        <form onsubmit="return addNewQuiz();">
+            <input type="text" id="new-quiz-name-textbox" />
+            <input type="submit" value="Add" />        
+        </form>
 
     </div>
 
@@ -25,10 +28,53 @@
             let quizListUl = document.getElementById('quiz-list');
 
             quizListUl.innerHTML = `
-                <li>Quiz 1</li>
-                <li>Quiz 2</li>
-                <li>Quiz 3</li>
+                <li class='list-group-item'>Quiz 1</li>
+                <li class='list-group-item'>Quiz 2</li>
+                <li class='list-group-item'>Quiz 3</li>
             `;
+
+            // Put focus into the add textbox!!!
+            let quizTextbox = document.getElementById("new-quiz-name-textbox");            
+            quizTextbox.focus();            
+        }
+
+        function addNewQuiz() {
+            
+            // Get what was typed into the textbox. Maybe validate it???
+            let quizTextbox = document.getElementById("new-quiz-name-textbox");
+            let newQuizName = quizTextbox.value; //.innerText;
+            console.log(newQuizName);
+        
+            // Update the quiz list, appending the new quiz name. 
+            let quizListUl = document.getElementById('quiz-list');
+
+            quizListUl.innerHTML += `
+                <li class='list-group-item'>${newQuizName} <button onclick='naiveDeleteQuiz("${newQuizName.toString()}");'>Delete</button></li>
+            `;     
+
+            // Clear the textbox after adding.
+            // And put focus in the textbox to facilitate
+            // multiple adds.
+            quizTextbox.value = "";
+            quizTextbox.focus();
+
+            return false;
+        }
+
+        function naiveDeleteQuiz(quizNameToDelete) {
+            
+            // Confirm the name is comming through!!!
+            console.log(quizNameToDelete);
+
+            // Split by newline, remove filter out rows containing quiz name.
+            let quizListUl = document.getElementById('quiz-list');
+            let currentList = quizListUl.innerHTML;
+
+            let newList = currentList.split('\n')
+                .filter(x => x.indexOf(quizNameToDelete) === -1);
+            console.log(newList);
+
+            quizListUl.innerHTML = newList.join('\n');
         }
     </script>
 </body>
